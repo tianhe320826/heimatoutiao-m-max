@@ -17,3 +17,17 @@ export const login = data => {
         data
     })
 }
+
+// 发送验证码部分
+// ps: 这个接口每分钟只能发1次
+// 导出一个叫sendSms的方法 ->  这是发送验证码部分的
+export const sendSms = mobile => {
+    // 把具体的请求配置到这个login()方法中
+    return request({
+        // method的请类型为'GET'
+        method: 'GET',
+        // 请求登录的接口地址,不需要写全,因为在utils中的request中配置了baseURL 
+        // 参数要放在url中作为参数传过去,所以此处的mobile要进行拼接
+        url: `/v1_0/sms/codes/${mobile}`
+    })
+}

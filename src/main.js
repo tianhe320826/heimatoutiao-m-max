@@ -17,6 +17,7 @@ import './styles/index.less'
 import 'amfe-flexible'
 
 
+
 // 注册使用 Vant 组件库
 Vue.use(Vant)
 
