@@ -1,7 +1,17 @@
 <template>
   <div class="login-container">
     <!-- 导航栏 -->
-    <van-nav-bar class="page-nav-bar" title="登录" />
+    <van-nav-bar 
+    class="page-nav-bar" 
+    title="登录" 
+    >
+      <van-icon 
+        slot="left" 
+        name="cross" 
+        @click="$router.back()"
+      />
+      <!-- ps: back()这个方法是路由内置的,后退功能 -->
+    </van-nav-bar> 
 
     <!-- 导航栏 -->
     <!-- 登录的表单 -->
@@ -150,6 +160,10 @@ export default {
         // 引入登录成功的提示
         // 登陆成功则覆盖了前一个的加载中提示,原因是: toast具备让一个覆盖另一个提示的功能
         this.$toast.success("登陆成功");
+         
+        // day02-14 登录成功, 跳转回原来的页面
+        // 但是使用back 的方式不严谨,后期会讲功能优化,暂时先使用这个
+        this.$router.back()
       } catch (err) {
         if (err.response.status === 400) {
           console.log("手机号或验证码错误");
